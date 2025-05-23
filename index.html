@@ -1,217 +1,207 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-
   <script src="https://apis.google.com/js/api.js"></script>
-<script>
-  function initClient() {
-    gapi.client.init({
-      'apiKey': 'AIzaSyB43xLa2-SMsrSYJyjRiGO2Qx6x0aQnRWQ',
-      'discoveryDocs': ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
-    }).then(function () {
-      // Chame a função para adicionar dados
-    });
-  }
+  <script>
+    function initClient() {
+      gapi.client.init({
+        'apiKey': 'AIzaSyB43xLa2-SMsrSYJyjRiGO2Qx6x0aQnRWQ',
+        'discoveryDocs': ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
+      }).then(function () {
+        // Chame a função para adicionar dados
+      });
+    }
 
-  function addDataToSheet(videoName, videoLink) {
-    const params = {
-      // ID da sua planilha
-      spreadsheetId: '12GtljxtJjGbbJZFMExt2Tbd78EmsofejvPNKglm6veA',
-      range: 'Sheet1!A:B', // Ajuste conforme necessário
-      valueInputOption: 'RAW',
-      resource: {
-        values: [[videoName, videoLink]],
-      },
-    };
+    function addDataToSheet(videoName, videoLink) {
+      const params = {
+        spreadsheetId: '12GtljxtJjGbbJZFMExt2Tbd78EmsofejvPNKglm6veA',
+        range: 'Sheet1!A:B',
+        valueInputOption: 'RAW',
+        resource: {
+          values: [[videoName, videoLink]],
+        },
+      };
 
-    gapi.client.sheets.spreadsheets.values.append(params).then((response) => {
-      console.log(response);
-    });
-  }
+      gapi.client.sheets.spreadsheets.values.append(params).then((response) => {
+        console.log(response);
+      });
+    }
 
-  gapi.load('client', initClient);
-</script>
-  
-  
-<style>
+    gapi.load('client', initClient);
+  </script>
 
-:root {
-  --bg: #121212;
-  --card: #007acc;
-  --accent: #007acc;
-  --text: #fff;
-  --border: #ddd;
-  --radius: 9.8px;
-  --gap: 13.8px;
-}
+  <style>
+    :root {
+      --bg: #121212;
+      --card: #007acc;
+      --accent: #007acc;
+      --text: #fff;
+      --border: #ddd;
+      --radius: 9.8px;
+      --gap: 13.8px;
+    }
 
-* { box-sizing: border-box; }
+    * { box-sizing: border-box; }
 
-body {
-  margin: 0; padding: 20px;
-  font-family: Arial, sans-serif;
-  background-color: var(--bg);
-  color: var(--text);
-}
+    body {
+      margin: 0; padding: 20px;
+      font-family: Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+    }
 
-.app {
-  max-width: 1200px; margin: 0 auto;
-}
+    .app {
+      max-width: 1200px; margin: 0 auto;
+    }
 
-.video-section {
-  margin-bottom: 40px;
-}
+    .video-section {
+      margin-bottom: 40px;
+    }
 
-.video-section h4 {
-  margin-bottom: 12px;
-  color: var(--accent);
-  font-size: 1.2rem;
-}
+    .video-section h4 {
+      margin-bottom: 12px;
+      color: var(--accent);
+      font-size: 1.2rem;
+    }
 
-.form {
-  display: flex; gap: var(--gap);
-  margin-bottom: 20px;
-}
+    .form {
+      display: flex; gap: var(--gap);
+      margin-bottom: 20px;
+    }
 
-.form input {
-  flex: 1;
-  padding: 8px 12px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-}
+    .form input {
+      flex: 1;
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
 
-.form button {
-  padding: 8px 16px;
-  border: none;
-  background-color: var(--accent);
-  color: #fff;
-  border-radius: var(--radius);
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
+    .form button {
+      padding: 8px 16px;
+      border: none;
+      background-color: var(--accent);
+      color: #fff;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
 
-.form button:hover { background-color: #005fa3; }
+    .form button:hover { background-color: #005fa3; }
 
-.video-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: var(--gap);
-}
+    .video-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: var(--gap);
+    }
 
-.video-item {
-  display: flex; flex-direction: column; /* Alterado para coluna */
-  align-items: center;
-  background: var(--card);
-  padding: 8px; border-radius: var(--radius);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  cursor: grab;
-}
-.video-item:active { cursor: grabbing; }
+    .video-item {
+      display: flex; flex-direction: column;
+      align-items: center;
+      background: var(--card);
+      padding: 8px; border-radius: var(--radius);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      cursor: grab;
+    }
+    .video-item:active { cursor: grabbing; }
 
-.video-item img {
-  width: 120px;
-  border-radius: var(--radius);
-  margin-bottom: 10px; /* Margem inferior para espaçamento */
-}
+    .video-item img {
+      width: 120px;
+      border-radius: var(--radius);
+      margin-bottom: 10px;
+    }
 
-.label-block {
-  display: flex;
-  align-items: center;
-  flex: 1;
-  justify-content: space-between;
-}
+    .label-block {
+      display: flex;
+      align-items: center;
+      flex: 1;
+      justify-content: space-between;
+    }
 
-.video-label { font-size: 0.95rem; }
+    .video-label { font-size: 0.95rem; }
 
-.edit-btn {
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 1rem;
-  cursor: pointer;
-}
+    .edit-btn {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+    }
 
-.edit-block {
-  display: flex;
-  flex-direction: column; /* Alterado para coluna */
-  align-items: stretch; /* Para ocupar toda a largura */
-  flex: 1;
-}
+    .edit-block {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      flex: 1;
+    }
 
-.edit-input {
-  padding: 4px 6px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  margin-bottom: 4px; /* Margem inferior para espaçamento */
-}
+    .edit-input {
+      padding: 4px 6px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 4px;
+    }
 
-.edit-buttons {
-  display: flex;
-  justify-content: space-between; /* Para espaçar os botões */
-}
+    .edit-buttons {
+      display: flex;
+      justify-content: space-between;
+    }
 
-.edit-buttons button {
-  padding: 4px 8px;
-  border: none;
-  border-radius: var(--radius);
-  background-color: var(--accent);
-  color: #fff;
-  cursor: pointer;
-}
+    .edit-buttons button {
+      padding: 4px 8px;
+      border: none;
+      border-radius: var(--radius);
+      background-color: var(--accent);
+      color: #fff;
+      cursor: pointer;
+    }
 
-hr {
-  border: none;
-  border-top: 1px solid var(--border);
-  margin: 40px 0;
-}
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 40px 0;
+    }
 
-/* Media Queries for Responsiveness */
-@media (max-width: 768px) {
-  .form {
-    flex-direction: column;
-  }
+    @media (max-width: 768px) {
+      .form {
+        flex-direction: column;
+      }
 
-  .form input {
-    margin-bottom: 10px;
-  }
+      .form input {
+        margin-bottom: 10px;
+      }
 
-  .video-item img {
-    width: 100px; /* Ajuste a largura da imagem para telas menores */
-  }
+      .video-item img {
+        width: 100px;
+      }
 
-  .video-section {
-    margin-bottom: 20px; /* Reduzir a margem inferior */
-  }
-}
+      .video-section {
+        margin-bottom: 20px;
+      }
+    }
 
-@media (max-width: 480px) {
-  .video-section h4 {
-    font-size: 1rem; /* Reduzir o tamanho da fonte do título */
-  }
+    @media (max-width: 480px) {
+      .video-section h4 {
+        font-size: 1rem;
+      }
 
-  .video-label {
-    font-size: 0.85rem; /* Reduzir o tamanho da fonte do rótulo do vídeo */
-  }
+      .video-label {
+        font-size: 0.85rem;
+      }
 
-  .video-list {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Ajustar a grade */
-  }
-}
-
-</style>
+      .video-list {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      }
+    }
+  </style>
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Galeria de Vídeos</title>
-  <link rel="stylesheet" href="styles.css" />
-  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body>
   <div id="root"></div>
 
-  <script type="text/babel">
+  <script>
     function getYouTubeID(url) {
       const regExp = /^.*(?:youtu\.be\/|youtube\.com\/(?:watch\?.*v=|embed\/|shorts\/))([^&\n?#]+).*/;
       const match = url.match(regExp);
@@ -220,13 +210,13 @@ hr {
 
     function VideoSection({ title, storageKey }) {
       const [videos, setVideos] = React.useState([]);
-      const [name, setName]   = React.useState("");
-      const [url, setUrl]     = React.useState("");
+      const [name, setName] = React.useState("");
+      const [url, setUrl] = React.useState("");
       const [editingIndex, setEditingIndex] = React.useState(null);
-      const [editingName, setEditingName]   = React.useState("");
-      const [editingUrl, setEditingUrl]     = React.useState(""); // Novo estado para URL
-      const dragItem       = React.useRef();
-      const dragOverItem   = React.useRef();
+      const [editingName, setEditingName] = React.useState("");
+      const [editingUrl, setEditingUrl] = React.useState("");
+      const dragItem = React.useRef();
+      const dragOverItem = React.useRef();
 
       React.useEffect(() => {
         const saved = localStorage.getItem(storageKey);
@@ -249,6 +239,7 @@ hr {
           return;
         }
         setVideos([...videos, { id, name: name.trim() }]);
+        addDataToSheet(name.trim(), url.trim()); // Chama a função para adicionar dados
         setName("");
         setUrl("");
       }
@@ -265,23 +256,23 @@ hr {
       function startEdit(i, currentName, currentUrl) {
         setEditingIndex(i);
         setEditingName(currentName);
-        setEditingUrl(currentUrl); // Preencher o URL para edição
+        setEditingUrl(currentUrl);
       }
       
       function saveEdit() {
         const updated = [...videos];
         updated[editingIndex].name = editingName.trim() || updated[editingIndex].name;
-        updated[editingIndex].id = getYouTubeID(editingUrl.trim()) || updated[editingIndex].id; // Atualizar o ID com o novo URL
+        updated[editingIndex].id = getYouTubeID(editingUrl.trim()) || updated[editingIndex].id;
         setVideos(updated);
         setEditingIndex(null);
         setEditingName("");
-        setEditingUrl(""); // Limpar o URL
+        setEditingUrl("");
       }
       
       function cancelEdit() {
         setEditingIndex(null);
         setEditingName("");
-        setEditingUrl(""); // Limpar o URL
+        setEditingUrl("");
       }
 
       return (
@@ -350,7 +341,7 @@ hr {
                     </span>
                     <button
                       className="edit-btn"
-                      onClick={() => startEdit(i, vid.name, `https://www.youtube.com/watch?v=${vid.id}`)} // Passar o URL atual
+                      onClick={() => startEdit(i, vid.name, `https://www.youtube.com/watch?v=${vid.id}`)}
                     >✎</button>
                   </div>
                 )}
